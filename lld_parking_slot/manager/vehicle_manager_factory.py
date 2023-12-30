@@ -13,5 +13,3 @@ class VehicleManagerFactory:
             return FourWheelerManager
         if vehicle_type == VehicleType.TWO_WHEELER:
             return HeavyWheelerManager()
-
-

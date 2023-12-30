@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class Expense(ABC):
     def __init__(self, amount, paid_by, splits, metadata):
         self.id = None

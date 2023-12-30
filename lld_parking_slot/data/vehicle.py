@@ -4,5 +4,3 @@ class Vehicle:
         self.vehicle_type = vehicle_type
         self.number = number
         self.entry_time = entry_time
-
-

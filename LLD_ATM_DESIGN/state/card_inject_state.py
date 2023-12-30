@@ -2,6 +2,8 @@ from .atm_state import AtmState
 from .Enum_state import StateType
 from ..custom_exception.exception import IllegalStateException
 from .ready_state import ReadyState
+
+
 class CardInjectState(AtmState):
     def __init__(self, atm):
         self.atm = atm

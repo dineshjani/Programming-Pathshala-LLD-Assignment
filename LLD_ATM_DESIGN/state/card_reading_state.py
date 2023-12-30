@@ -4,6 +4,8 @@ from ..card.card_manager_factory import CardManagerFactory
 from ..db.db_accesor import DBAccesor
 from .withdrawl_reading_state import WithdrawlReadingState
 from .ready_state import ReadyState
+
+
 class CardReadingState:
     def __init__(self, atm):
         self.atm = atm
@@ -16,7 +18,9 @@ class CardReadingState:
         self.atm.change_state(ReadyState(self.atm))
 
     def read_card(self, card_type, card_details):
-        result = CardManagerFactory.get_card_manager(card_type).validate_card(card_details)
+        result = CardManagerFactory.get_card_manager(card_type).validate_card(
+            card_details
+        )
         DBAccesor.persist_card_details(card_details, self.atm.machine_id)
         if result:
             self.atm.change_state(WithdrawlReadingState(self.atm))

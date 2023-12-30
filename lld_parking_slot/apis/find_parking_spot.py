@@ -8,16 +8,20 @@ from lld_parking_slot.finder.parking_spot_finder import ParkingSpotFinder
 
 class ParkingSpotApi:
     @staticmethod
-    def find_parking_spot(entry_point:Entrypoint, vehicle_type: VehicleType, spot_selection:SpotSelection):
+    def find_parking_spot(
+        entry_point: Entrypoint,
+        vehicle_type: VehicleType,
+        spot_selection: SpotSelection,
+    ):
         vehicle_manager = VehicleManagerFactory.get_vehicle_type_manager(vehicle_type)
         if spot_selection == SpotSelection.RANDOM:
-             parking_spot_selector = SpotSelectionFactory.get_random_spot_selector()
+            parking_spot_selector = SpotSelectionFactory.get_random_spot_selector()
         elif spot_selection == SpotSelection.NEAREST:
-            parking_spot_selector = SpotSelectionFactory.get_nearest_spot_selector(entry_point)
+            parking_spot_selector = SpotSelectionFactory.get_nearest_spot_selector(
+                entry_point
+            )
         else:
             raise RuntimeError("invalid spot selection")
-        return ParkingSpotFinder(vehicle_manager, parking_spot_selector).find_parking_spot()
-
-
-
-
+        return ParkingSpotFinder(
+            vehicle_manager, parking_spot_selector
+        ).find_parking_spot()

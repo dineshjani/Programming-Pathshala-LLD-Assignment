@@ -4,6 +4,8 @@ from .card_reading_state import CardReadingState
 from .card_inject_state import CardInjectState
 from .cash_dispening_state import CashDispensingState
 from .withdrawl_reading_state import WithdrawlReadingState
+
+
 class StateFactory:
     @staticmethod
     def get_state(state, atm):
@@ -17,4 +19,3 @@ class StateFactory:
             return CardInjectState(atm)
         elif state == StateType.CARD_READING_STATE:
             return CardReadingState(atm)
-

@@ -1,4 +1,6 @@
 from expense_service import ExpenseService
+
+
 class ExpenseManager:
     def __init__(self):
         self.expenses = []
@@ -10,7 +12,9 @@ class ExpenseManager:
         self.balance_sheet[user.get_id()] = {}
 
     def add_expense(self, expense_type, amount, paid_by, splits, expense_metadata):
-        expense = ExpenseService.create_expense(expense_type, amount, self.user_map[paid_by], splits, expense_metadata)
+        expense = ExpenseService.create_expense(
+            expense_type, amount, self.user_map[paid_by], splits, expense_metadata
+        )
         self.expenses.append(expense)
 
         for split in expense.get_splits():

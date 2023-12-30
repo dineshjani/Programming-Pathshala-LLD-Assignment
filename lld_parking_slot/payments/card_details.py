@@ -3,4 +3,3 @@ class CardDetails:
         self.name_on_card = name_on_card
         self.pin = pin
         self.card_number = card_number
-

@@ -3,8 +3,9 @@ from LLD_ELEVATOR.data.direction import Direction
 from .moving_up_state import MovingUpState
 from .moving_down_state import MovingDownState
 from LLD_ELEVATOR.data.state import State
-class GateOpenState(ElevatorState):
 
+
+class GateOpenState(ElevatorState):
     def __init__(self, elevator):
         self.elevator = elevator
 
@@ -16,6 +17,7 @@ class GateOpenState(ElevatorState):
 
     def close(self, floor):
         from .idle_state import IdleState
+
         direction = self.elevator.move_store.get_current_direction()
         if direction == Direction.UP:
             self.elevator.set_current_state(MovingUpState(self.elevator))
@@ -25,7 +27,6 @@ class GateOpenState(ElevatorState):
             self.elevator.set_current_state(IdleState(self.elevator))
         else:
             raise RuntimeError("Unsupported direction enum")
-
 
     def stop(self, floor):
         raise RuntimeError("Not an valid action on curren state")

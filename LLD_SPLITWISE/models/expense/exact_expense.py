@@ -1,5 +1,7 @@
 from .expense import Expense
 from ..split.exact_split import ExactSplit
+
+
 class ExactExpense(Expense):
     def __init__(self, amount, paid_by, splits, expense_metadata):
         super().__init__(amount, paid_by, splits, expense_metadata)

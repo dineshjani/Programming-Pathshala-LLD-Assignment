@@ -1,9 +1,11 @@
 from ..db.db_accesor import DBAccesor
 from ..state.state_factory import StateFactory
+
+
 class Atm:
     def __init__(self, machine_id):
         self.machine_id = machine_id
-        #should not depend on concrete class
+        # should not depend on concrete class
         self.state = StateFactory.get_state(DBAccesor.get_atm_state(machine_id), self)
 
     def init(self):

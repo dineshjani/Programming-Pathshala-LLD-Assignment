@@ -1,4 +1,6 @@
 from enum import Enum
+
+
 class StateType(Enum):
     READY = 1
     CARD_READING_STATE = 2

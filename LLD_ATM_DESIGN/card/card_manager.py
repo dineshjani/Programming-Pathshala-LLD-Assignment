@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+
+
 class CardManager(ABC):
     @abstractmethod
     def validate_card(self, card_details):
@@ -11,4 +13,3 @@ class CardManager(ABC):
     @abstractmethod
     def execute_withdrawal(self, trans_id):
         pass
-

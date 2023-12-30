@@ -1,5 +1,5 @@
-
 from abc import ABC, abstractmethod
+
 
 class Split(ABC):
     def __init__(self, user):

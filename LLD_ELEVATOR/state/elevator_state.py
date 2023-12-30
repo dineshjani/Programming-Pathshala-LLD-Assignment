@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+
+
 class ElevatorState(ABC):
     @abstractmethod
     def destine(self, floor, direction):

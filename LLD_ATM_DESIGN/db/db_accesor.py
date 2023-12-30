@@ -1,4 +1,6 @@
 from ..state.Enum_state import StateType
+
+
 class DBAccesor:
     @staticmethod
     def get_atm_state(machine_id):
@@ -7,6 +9,7 @@ class DBAccesor:
     @staticmethod
     def create_new_transcation(self, machine_id):
         return 1
+
     @staticmethod
     def update_atm_state(self, machine_id, state):
         pass
@@ -18,6 +21,7 @@ class DBAccesor:
     @staticmethod
     def dis_approve_trans(machine_id):
         pass
+
     @staticmethod
     def cancel_transcation(self, trans_id):
         pass

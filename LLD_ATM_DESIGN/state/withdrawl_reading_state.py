@@ -6,6 +6,8 @@ from .cash_dispening_state import CashDispensingState
 from ..custom_exception.exception import IllegalStateException
 from ..card.card_manager_factory import CardManagerFactory
 from ..card.transcation_status import TranscationStatus
+
+
 class WithdrawlReadingState(AtmState):
     def __init__(self, atm):
         self.atm = atm
@@ -22,14 +24,19 @@ class WithdrawlReadingState(AtmState):
         raise IllegalStateException("Invalid state")
 
     def read_withdrawal_details(self, card_type, card_details, trans_id, amount):
-        result = CardManagerFactory.get_card_manager(card_type).validate_withdrawal(trans_id, amount)
+        result = CardManagerFactory.get_card_manager(card_type).validate_withdrawal(
+            trans_id, amount
+        )
         if result:
             self.atm.change_state(CashDispensingState(self.atm))
-            DBAccesor.persist_withdrawal_details(trans_id, amount, TranscationStatus.APPROVED)
+            DBAccesor.persist_withdrawal_details(
+                trans_id, amount, TranscationStatus.APPROVED
+            )
         else:
-            DBAccesor.persist_withdrawal_details(trans_id, amount, TranscationStatus.DECLINED)
+            DBAccesor.persist_withdrawal_details(
+                trans_id, amount, TranscationStatus.DECLINED
+            )
             self.atm.change_state(CardInjectState(self.atm))
-
 
     def dispense_cash(self, trans_id):
         raise IllegalStateException("Invalid state")

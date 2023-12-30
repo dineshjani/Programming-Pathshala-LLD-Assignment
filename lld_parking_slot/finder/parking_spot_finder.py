@@ -6,4 +6,3 @@ class ParkingSpotFinder:
     def find_parking_spot(self):
         select_spot = self.vehicle_manager.get_parking_spots()
         return self.spot_selector.select_spot(select_spot)
-

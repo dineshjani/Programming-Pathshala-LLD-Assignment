@@ -2,7 +2,6 @@ from vehicle_type_manager import VehicleTypeManager
 
 
 class TwoWheelerManager(VehicleTypeManager):
-
     def get_parking_spots(self):
         pass
 

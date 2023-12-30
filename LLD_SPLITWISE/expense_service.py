@@ -3,6 +3,7 @@ from models.expense.exact_expense import ExactExpense
 from models.expense.percent_expense import PercentExpense
 from models.expense.equal_expense import EqualExpense
 
+
 class ExpenseService:
     @staticmethod
     def create_expense(expense_type, amount, paid_by, splits, expense_metadata):

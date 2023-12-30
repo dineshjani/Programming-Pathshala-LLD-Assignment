@@ -3,4 +3,3 @@ class Ticket:
         self.ref_num = ref_num
         self.vehicle = vehicle
         self.parking_spot = parking_spot
-

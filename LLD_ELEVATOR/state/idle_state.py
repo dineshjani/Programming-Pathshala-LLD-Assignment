@@ -5,8 +5,9 @@ from .moving_up_state import MovingUpState
 from .moving_down_state import MovingDownState
 from .gate_open_state import GateOpenState
 from LLD_ELEVATOR.data.move import Move
-class IdleState(ElevatorState):
 
+
+class IdleState(ElevatorState):
     def __init__(self, elevator):
         self.elevator = elevator
 

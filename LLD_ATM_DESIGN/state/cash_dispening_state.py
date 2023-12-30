@@ -4,6 +4,8 @@ from ..custom_exception.exception import IllegalStateException
 from .card_inject_state import CardInjectState
 from ..db.db_accesor import DBAccesor
 from ..card.card_manager_factory import CardManagerFactory
+
+
 class CashDispensingState(AtmState):
     def __init__(self, atm):
         self.atm = atm
@@ -24,10 +26,11 @@ class CashDispensingState(AtmState):
 
     def dispense_cash(self, trans_id):
         card_type = ""
-        res = CardManagerFactory.get_card_manager(card_type).execute_withdrawal(trans_id)
+        res = CardManagerFactory.get_card_manager(card_type).execute_withdrawal(
+            trans_id
+        )
         self.atm.change_state(CardInjectState(self.atm))
         return DBAccesor.mark_as_executed(trans_id)
-
 
     def inject_card(self):
         raise IllegalStateException("Invalid state")

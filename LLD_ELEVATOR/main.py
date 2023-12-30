@@ -3,6 +3,8 @@ from moves_store.uni_direction_move_store import UniDirectionalMoveStore
 from state.idle_state import IdleState
 from data.floor import Floor
 from LLD_ELEVATOR.data.direction import Direction
+
+
 class Driver:
     def main(self):
         directionStore = UniDirectionalMoveStore()
@@ -37,9 +39,7 @@ class Driver:
         print(directionStore.current_direction)
 
 
-
-
-#adding comment
+# adding comment
 
 if __name__ == "__main__":
     driver = Driver()

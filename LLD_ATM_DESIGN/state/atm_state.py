@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from ..card.card_details import CardDetails
 
+
 class AtmState(ABC):
     @abstractmethod
     def init(self):
@@ -11,11 +12,13 @@ class AtmState(ABC):
         pass
 
     @abstractmethod
-    def read_card(self, card_type, cardDetails:CardDetails):
+    def read_card(self, card_type, cardDetails: CardDetails):
         pass
 
     @abstractmethod
-    def read_withdrawal_details(self, card_type, cardDetails:CardDetails, trans_id, amount):
+    def read_withdrawal_details(
+        self, card_type, cardDetails: CardDetails, trans_id, amount
+    ):
         pass
 
     @abstractmethod
@@ -29,4 +32,3 @@ class AtmState(ABC):
     @staticmethod
     def get_state_name(self):
         pass
-

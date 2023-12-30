@@ -1,4 +1,6 @@
 from lld_parking_slot.data.ticket import Ticket
+
+
 class TicketGenerator:
     @staticmethod
     def generate_ticket(vehicle, parking_spot):
@@ -9,5 +11,3 @@ class TicketGenerator:
     @staticmethod
     def get_unique_ticket_num():
         return ""
-
-

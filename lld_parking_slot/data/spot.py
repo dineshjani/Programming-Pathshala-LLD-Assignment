@@ -4,4 +4,3 @@ class ParkingSpot:
         self.vehicle_type = vehicle_type
         self.name = name
         self.is_free = is_free
-

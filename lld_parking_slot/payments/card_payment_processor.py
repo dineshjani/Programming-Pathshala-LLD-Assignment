@@ -3,8 +3,7 @@ from card_details import CardDetails
 
 
 class CardPaymentProcessor(PaymentProcessor):
-
-    def __init__(self, amount, card_details:CardDetails):
+    def __init__(self, amount, card_details: CardDetails):
         self.amount = amount
         self.card_details = card_details
 

@@ -1,4 +1,6 @@
 from .card_manager import CardManager
+
+
 class DebitCardManager(CardManager):
     def validate_card(self, card_details):
         return True

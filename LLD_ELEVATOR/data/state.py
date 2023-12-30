@@ -1,4 +1,6 @@
 from enum import Enum
+
+
 class State(Enum):
     IDLE = 1
     MOVINGUP = 2
