@@ -5,11 +5,10 @@ from design_ecommerce_application.data.user import User
 
 
 class SearchProductApi:
-
     def __init__(self, product_searcher: ProductSearcher):
         self.product_searcher = product_searcher
 
-    def search(self, product_name,  filter_details: FilterDetails, user:User):
+    def search(self, product_name, filter_details: FilterDetails, user: User):
         permission = PermissionFactory.get_search_permission(user)
         if permission is None or permission.is_permitted(user):
             raise RuntimeError("Do not have search permission")

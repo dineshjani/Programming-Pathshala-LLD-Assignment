@@ -4,4 +4,3 @@ class User:
         self.email = email
         self.phone_number = phone_number
         self.id = id
-

@@ -1,6 +1,10 @@
 from design_ecommerce_application.data.product import Product
 from design_ecommerce_application.data.product_copy import ProductCopy
+from design_ecommerce_application.data.cart import Cart
+from design_ecommerce_application.data.user import User
 from typing import List
+
+
 class DbAccessor:
     def __init__(self):
         pass
@@ -9,4 +13,10 @@ class DbAccessor:
         pass
 
     def get_product_copy_by_id(self, id) -> ProductCopy:
+        pass
+
+    def get_cart_by_user(self, user: User) -> Cart:
+        pass
+
+    def persist_cart(self, user, cart: Cart):
         pass

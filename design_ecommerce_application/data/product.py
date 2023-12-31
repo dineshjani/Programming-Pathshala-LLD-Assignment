@@ -1,5 +1,7 @@
 class Product:
-    def __init__(self, id, name, description, price, rating, is_pay_on_delivery, is_available):
+    def __init__(
+        self, id, name, description, price, rating, is_pay_on_delivery, is_available
+    ):
         """
         Here some field is optional (like description) we can use builder pattern and make better
         :param id:
@@ -10,7 +12,7 @@ class Product:
         :param is_pay_on_delivery:
         :param is_available:
         """
-        self.id = id  #physical entity
+        self.id = id  # physical entity
         self.name = name
         self.description = description
         self.price = price

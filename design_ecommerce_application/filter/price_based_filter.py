@@ -4,12 +4,11 @@ from typing import List
 
 
 class PriceBasedFilter(ProductFilter):
-
-    def __init__(self, price_upper_cap:int, next_filter: ProductFilter):
+    def __init__(self, price_upper_cap: int, next_filter: ProductFilter):
         self.price_upper_cap = price_upper_cap
         self.next_filter = next_filter
 
-    def filter(self, products:List[Product]) -> List[Product] :
+    def filter(self, products: List[Product]) -> List[Product]:
         filtered_products: List[Product] = self.next_filter.filter(products)
         final_products = []
         for product in filtered_products:

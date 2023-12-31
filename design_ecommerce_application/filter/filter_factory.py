@@ -10,18 +10,21 @@ class FilterFactory:
     """
     chaining design pattern
     """
+
     @staticmethod
-    def get_product_filter(filter_details:FilterDetails):
+    def get_product_filter(filter_details: FilterDetails):
         filter: ProductFilter = IdleFilter()
         if filter_details.price_filter is not None:
-            filter:ProductFilter = PriceBasedFilter(filter_details.price_filter.get("upper_cap_price"), filter)
+            filter: ProductFilter = PriceBasedFilter(
+                filter_details.price_filter.get("upper_cap_price"), filter
+            )
         if filter_details.rating_filter is not None:
-            filter:ProductFilter = RatingBasedFilter(filter_details.rating_filter.get("min_rating"), filter)
+            filter: ProductFilter = RatingBasedFilter(
+                filter_details.rating_filter.get("min_rating"), filter
+            )
         if filter_details.pay_on_delivery is not None:
-            filter:ProductFilter = PayOnDelFilter(filter_details.pay_on_delivery.get("pay_on_delivery"), filter)
+            filter: ProductFilter = PayOnDelFilter(
+                filter_details.pay_on_delivery.get("pay_on_delivery"), filter
+            )
 
         return filter
-
-
-
-

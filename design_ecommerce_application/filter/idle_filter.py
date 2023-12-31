@@ -7,6 +7,5 @@ class IdleFilter(ProductFilter):
     def __init__(self):
         pass
 
-    def filter(self, products:List[Product]) -> List[Product] :
+    def filter(self, products: List[Product]) -> List[Product]:
         return products
-
