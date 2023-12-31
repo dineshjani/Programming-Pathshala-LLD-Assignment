@@ -4,14 +4,17 @@ from food_delivery_system.data.food_item import FoodItem
 from food_delivery_system.factory.permission_factory import PermissionFactory
 from typing import List
 from food_delivery_system.data_accessor.data_accesor import DataAccessor
+from food_delivery_system.data.data_access_result import DataAccessResult
+from food_delivery_system.data.dataaccess_result_converter import (
+    DataAccessObjectConverter,
+)
 
 
 class CartManager:
     @staticmethod
     def get_user_cart(user: User) -> List[CartItem]:
-        resp = DataAccessor.get_user_cart(user)
-        # convert resp as wanted format
-        return resp
+        resp: DataAccessResult = DataAccessor.get_user_cart(user)
+        return DataAccessObjectConverter.convert_to_cart_items(resp)
 
     @staticmethod
     def add_item_to_cart(user: User, food_item: FoodItem):
@@ -42,11 +45,31 @@ class CartManager:
         ).is_permitted()
         if not is_permitted:
             raise RuntimeError("Not permitted for add-to-cart operation")
+        if not CartManager.is_food_item_is_present_in_cart(user, food_item):
+            raise RuntimeError("food-item is not present in cart")
         DataAccessor.delete_item_from_cart(user, food_item)
 
     @staticmethod
     def checkout_user_cart(user: User):
-        pass
+        is_permitted = PermissionFactory.get_checkout_cart_permiseion(
+            user
+        ).is_permitted()
+        is_cart_empty = CartManager.is_cart_empty(user)
+        if is_cart_empty:
+            raise RuntimeError("Cart is empty cannot checkout")
+        if not is_permitted:
+            raise RuntimeError("Not permitted for checkout-cart operation")
+        DataAccessor.checkout_cart(user)
+
+    @staticmethod
+    def is_cart_empty(user):
+        cart_items: List[CartItem] = CartManager.get_user_cart(user)
+        return len(cart_items) == 0
+
+    @staticmethod
+    def is_food_item_is_present_in_cart(user: User, food_item: FoodItem):
+        cart_items: List[CartItem] = CartManager.get_user_cart(user)
+        return food_item in cart_items
 
 
 # write need to permission for do operation

@@ -1,5 +1,7 @@
 from food_delivery_system.data.food_item import FoodItem
 from food_delivery_system.data.user import User
+from typing import List
+from food_delivery_system.data.cart_item import CartItem
 
 
 class DataAccessor:
@@ -21,4 +23,16 @@ class DataAccessor:
 
     @staticmethod
     def delete_item_from_cart(user: User, food_item: FoodItem):
+        pass
+
+    @staticmethod
+    def checkout_cart(user: User):
+        pass
+
+    @staticmethod
+    def create_order(user_id, cart_items: List[CartItem]) -> str:
+        pass
+
+    @staticmethod
+    def update_order_status(user_id, status):
         pass
