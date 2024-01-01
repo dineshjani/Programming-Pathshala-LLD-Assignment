@@ -1,14 +1,16 @@
 from design_ecommerce_application.data.product_copy import ProductCopy
 from typing import List
+
+
 class Cart:
     def __init__(self, id, products: List[ProductCopy]):
         self.id = id
         self.products = products
 
-    def add(self, product_copy:ProductCopy):
+    def add(self, product_copy: ProductCopy):
         self.products.append(product_copy)
 
-    def remove(self, product_copy:ProductCopy):
+    def remove(self, product_copy: ProductCopy):
         if product_copy not in self.products:
             raise RuntimeError("Product does not exist")
         self.products.remove(product_copy)

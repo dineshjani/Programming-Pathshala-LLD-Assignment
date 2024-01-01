@@ -4,6 +4,9 @@ from design_ecommerce_application.permission.search_product_permissiom import (
 from design_ecommerce_application.permission.add_to_cart_permission import (
     AddToCartPermission,
 )
+from design_ecommerce_application.permission.track_order_permission import (
+    TrackOrderPermission,
+)
 
 
 class PermissionFactory:
@@ -16,3 +19,7 @@ class PermissionFactory:
     @staticmethod
     def add_to_cart_permission(user):
         return AddToCartPermission(user)
+
+    @staticmethod
+    def track_order_permission(user):
+        return TrackOrderPermission(user)
