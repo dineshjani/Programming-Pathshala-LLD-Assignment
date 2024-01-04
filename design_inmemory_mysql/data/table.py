@@ -1,4 +1,4 @@
-from typing import Set,List
+from typing import Set, List
 from row import Row
 from column import Column
 from design_inmemory_mysql.constraint.constraint import Constraint
@@ -6,7 +6,9 @@ from design_inmemory_mysql.constraint.constraint_type import ConstraintType
 
 
 class Table:
-    def __init__(self, name, columns: Set[Column], row: List[Row], constraints: List[Constraint ]):
+    def __init__(
+        self, name, columns: Set[Column], row: List[Row], constraints: List[Constraint]
+    ):
         self.name = name
         self.columns = columns
         self.rows = row
@@ -42,7 +44,10 @@ class Table:
     def remove_constraint(self, constraint_type: ConstraintType, related_table):
         list_removable_constraint = []
         for constraint in self.constraints:
-            if constraint.get_constraint_type() == constraint_type and constraint.is_related_constraint(related_table):
+            if (
+                constraint.get_constraint_type() == constraint_type
+                and constraint.is_related_constraint(related_table)
+            ):
                 list_removable_constraint.append(constraint)
 
         for constraint in list_removable_constraint:

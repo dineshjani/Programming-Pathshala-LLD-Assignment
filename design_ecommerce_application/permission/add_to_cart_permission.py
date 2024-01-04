@@ -3,9 +3,7 @@ from design_ecommerce_application.db_accessor.db_accessor import DbAccessor
 
 
 class AddToCartPermission(Permission):
-    """
-
-    """
+    """ """
 
     max_cart_amount = 1000000
     distinct_item_count = 50

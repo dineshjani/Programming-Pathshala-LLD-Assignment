@@ -19,7 +19,7 @@ class Database:
             raise RuntimeError("Table Does not exists")
         return self.tables.get(table_name)
 
-    def put_table(self, table_name, table:Table):
+    def put_table(self, table_name, table: Table):
         if self.table_name not in self.tables:
             raise RuntimeError("Table Does not exists")
         self.tables[table_name] = table
@@ -31,7 +31,3 @@ class Database:
 
     def get_all_tables(self) -> List[Table]:
         return self.tables.keys()
-
-
-
-

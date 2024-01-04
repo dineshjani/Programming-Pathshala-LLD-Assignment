@@ -4,7 +4,6 @@ from design_inmemory_mysql.constraint.constraint_type import ConstraintType
 
 
 class Constraint(ABC):
-
     @abstractmethod
     def apply_on_insert_row(self, row_to_be_inserted: Row):
         pass

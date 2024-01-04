@@ -7,7 +7,7 @@ from typing import List
 
 
 class ChildForeignKeyConstraint(Constraint):
-    def __init__(self, child_table: Table, column_mapping:  List[ColumnMapping]):
+    def __init__(self, child_table: Table, column_mapping: List[ColumnMapping]):
         self.child_table = child_table
         self.column_mapping = column_mapping
 
@@ -23,7 +23,9 @@ class ChildForeignKeyConstraint(Constraint):
         for row in self.child_table.rows:
             all_match = True
             for column_mapping in self.column_mapping:
-                if row.get(column_mapping.foreign_table_column) != row_to_be_deleted.get(column_mapping.current_table_column):
+                if row.get(
+                    column_mapping.foreign_table_column
+                ) != row_to_be_deleted.get(column_mapping.current_table_column):
                     all_match = False
             if all_match:
                 raise RuntimeError("Child Foreign key constraint violated")

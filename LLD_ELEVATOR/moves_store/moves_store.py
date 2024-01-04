@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 # from ..data.move import Move
 class MoveStore(ABC):
     @abstractmethod

@@ -2,7 +2,9 @@ from sql_command import SqlCommand
 from design_inmemory_mysql.data.table import Table
 from design_inmemory_mysql.constraint.constraint_type import ConstraintType
 from typing import List
-from design_inmemory_mysql.constraint.child_primary_key_constraints import PrimaryKeyConstraint
+from design_inmemory_mysql.constraint.child_primary_key_constraints import (
+    PrimaryKeyConstraint,
+)
 
 
 class AddPrimaryKeyConstraintCommand(SqlCommand):
@@ -19,6 +21,3 @@ class AddPrimaryKeyConstraintCommand(SqlCommand):
         if len(constraints) != 0:
             raise RuntimeError("Primary key constraints exists")
         table.add_constraints(PrimaryKeyConstraint(table, columns))
-
-
-

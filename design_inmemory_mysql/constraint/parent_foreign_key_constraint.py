@@ -8,7 +8,7 @@ from typing import List
 
 
 class ParentForeignKeyConstraint(Constraint):
-    def __init__(self, parent_table: Table, column_mapping:  List[ColumnMapping]):
+    def __init__(self, parent_table: Table, column_mapping: List[ColumnMapping]):
         self.parent_table = parent_table
         self.column_mapping = column_mapping
 
@@ -16,7 +16,9 @@ class ParentForeignKeyConstraint(Constraint):
         for row in self.parent_table.rows:
             all_match = True
             for column_mapping in self.column_mapping:
-                if row.get(column_mapping.foreign_table_column) != row_to_be_inserted.get(column_mapping.current_table_column):
+                if row.get(
+                    column_mapping.foreign_table_column
+                ) != row_to_be_inserted.get(column_mapping.current_table_column):
                     all_match = False
             if all_match:
                 return

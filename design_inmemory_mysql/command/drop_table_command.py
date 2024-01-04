@@ -10,14 +10,21 @@ class DropTableCommand(SqlCommand):
 
     def execute(self):
         db = Database.get_instance()
-        table_to_be_deleted : Table = db.get_table(self.table_name)
-        if len(table_to_be_deleted.get_constraint_by_type(ConstraintType.CHILD_FOREIGN_KEY)) == 0:
+        table_to_be_deleted: Table = db.get_table(self.table_name)
+        if (
+            len(
+                table_to_be_deleted.get_constraint_by_type(
+                    ConstraintType.CHILD_FOREIGN_KEY
+                )
+            )
+            == 0
+        ):
             raise RuntimeError(" first delete the child table")
         for table in db.get_table():
             # delete in parent table where point to this table_to_be_related table
             # so parent table will have CHILD_FOREIGN_KEY constraint with this table_to_be_deleted(child table)
-            table.remove_constraints(ConstraintType.CHILD_FOREIGN_KEY, table_to_be_deleted)
+            table.remove_constraints(
+                ConstraintType.CHILD_FOREIGN_KEY, table_to_be_deleted
+            )
         db.delete_table_name(table_to_be_deleted)
         print("Successfully dropped table")
-
-

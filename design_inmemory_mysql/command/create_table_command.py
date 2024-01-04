@@ -14,5 +14,3 @@ class CreateTableCommand(SqlCommand):
         table: Table = Table(self.table_name, self.columns)
         Database.get_instance().put_table(self.table_name, table)
         print("Successfully created table")
-
-

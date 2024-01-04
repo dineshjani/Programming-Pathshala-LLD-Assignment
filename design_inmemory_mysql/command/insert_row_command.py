@@ -12,9 +12,7 @@ class InsertRowCommand(SqlCommand):
         self.key_val_pairs = key_value_pairs
 
     def execute(self):
-        table:Table = Database.get_instance().get_table(self.table_name)
+        table: Table = Database.get_instance().get_table(self.table_name)
         row: Row = Row(table.columns)
         for key_val_pairs in self.key_val_pairs:
             row.put(table.get_column(key_val_pairs.key), key_val_pairs.val)
-
-
